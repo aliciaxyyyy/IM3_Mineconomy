@@ -1,12 +1,12 @@
 # Sensitive configuration files
 .vscode/sftp.json
-IM3_Projekt/php/config.php
+php/config.php
 
 # Environment files
 .env
 .env.local
 .env.*.local
-
+x
 # Database files
 *.sql
 *.db
