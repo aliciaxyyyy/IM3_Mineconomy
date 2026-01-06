@@ -75,7 +75,7 @@
 						<!-- Checkpoints -->
 						<div class="checkpoint" data-period="1" id="checkpoint-1">
 							<div class="checkpoint-marker"></div>
-							<div class="checkpoint-label">Today</div>
+							<div class="checkpoint-label">Newest</div>
 						</div>
 						<div class="checkpoint" data-period="7" id="checkpoint-7">
 							<div class="checkpoint-marker"></div>
