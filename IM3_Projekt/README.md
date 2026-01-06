@@ -5,8 +5,6 @@ Mineconomy ist eine interaktive Website, die Informationen zu den Edelmetallen G
 <h2> Learnings und Schwierigkeiten: </h2>
 Chart.js war unser Endgegner. Drag & Drop ebenfalls. Dies waren beide schwierige Mechanismen für unsere Webseite, die wir mit viel Geduld und mit Unterstützung von AI schlussendlich besiegt haben.
 
-Wir haben ausserdem gelernt, dass wir die Datenbank Login-Daten verstecken müssen, da es vergessen ging beim 1. Versuch das GitHub Projekt zu publizieren.
-
 Wir fanden die Kursaufgabe sehr komplex und aufwändig, da es viel Stoff in kurzer Zeit war und viele Schritte benötigte. Jedoch hatte man immer wieder durch kleine Erfolge Freude am Arbeiten. 
 
 <h2> Ressourcen: </h2>
