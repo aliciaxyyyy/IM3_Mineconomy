@@ -155,8 +155,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 window.metalsChart.data.datasets = newDatasets;
                 window.metalsChart.data.labels = data.dates;
                 window.metalsChart.config.type = (period === "1") ? "bar" : "line";
+                // Title: show "Last Entry" for single-day view; keep multi-day as-is
                 window.metalsChart.options.plugins.title.text =
-                    `Precious Metals Prices - Last ${period} > 1 ? 's' : ''} (USD per Ounce)`;
+                    (period === "1")
+                        ? "Precious Metals Prices - Last Entry (USD per Ounce)"
+                        : `Precious Metals Prices - Last ${period} Days (USD per Ounce)`;
                 window.metalsChart.update();
 
                 activePeriod = period;
