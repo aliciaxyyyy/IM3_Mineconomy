@@ -17,8 +17,8 @@ try {
     switch($period) {
         case '1':
         default:
-            $stmt = $pdo->prepare("SELECT date, gold, silver, platinum FROM `mineral value` WHERE date = CURDATE() ORDER BY date DESC LIMIT 1");
-            $chartTitle = "Heutige Edelmetallpreise";
+            $stmt = $pdo->prepare("SELECT date, gold, silver, platinum FROM `mineral value`ORDER BY date DESC LIMIT 1");
+            $chartTitle = "Neuste Edelmetallpreise";
             break;
         case '30':
             $stmt = $pdo->prepare("SELECT date, gold, silver, platinum FROM `mineral value` WHERE date >= DATE_SUB(CURDATE(), INTERVAL 30 DAY) ORDER BY date ASC");
