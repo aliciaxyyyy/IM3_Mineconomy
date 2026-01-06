@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metal Values - Chart</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* PHP-Seite spezifisches Hintergrundbild */
+        body {
+            background-image: url("images/mine-backdrop.jpg") !important;
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+    </style>
+</head>
+<body>
+    <!-- Logo -->
+    <a href="index.html">
+        <img src="images/torchglow.png" alt="Mine Logo" class="torch-logo">
+    </a>
+
+    <!-- Help Tooltip -->
+    <div class="help-tooltip">
+        <div class="help-icon">?</div>
+        <div class="help-content">
+            <h4>How to use</h4>
+            <ul>
+                <li>Drag metals from the container</li>
+                <li>Drop them into the drop container</li>
+                <li>Press "Go" to view charts with your selected metals</li>
+                <li>Click checkpoints on the railway to select different time period</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Drag & Drop Section -->
+    <div class="minerals-container">
+        <p class="minerals-text">Drag and drop metals into the drop container:</p>
+        
+        <!-- Originale Mineralien mit eindeutiger ID -->
+        <img id="gold" src="images/Gold.png" alt="Gold" class="draggable-item" draggable="true" data-mineral="gold">
+        <img id="silver" src="images/Silver.png" alt="Silver" class="draggable-item" draggable="true" data-mineral="silver">
+        <img id="platinum" src="images/Platinum.png" alt="Platinum" class="draggable-item" draggable="true" data-mineral="platinum">
+    </div>
+
+    <!-- Containers Wrapper for side-by-side layout -->
+    <div class="containers-wrapper">
+        <!-- Drop Container (left side) -->
+        <div class="drop-container">
+            <h2 class="drop-title">Drop container</h2>
+            <div class="drop-grid" id="dropContainer">
+                <!-- Drop-Cells mit eindeutiger ID -->
+                <div class="drop-cell" id="cell1"></div>
+                <div class="drop-cell" id="cell2"></div>
+                <div class="drop-cell" id="cell3"></div>
+                <div class="drop-cell" id="cell4"></div>
+            </div>
+            <div class="go-button-minerals-container">
+            <button class="go-button-minerals">Go</button>
+            </div>
+        </div>
+
+        <!-- Chart Section (right side) -->
+        <div class="main-container">        
+        <div class="page-content">
+            <h1 class="page-title">Precious Metals Chart</h1>
+
+            <!-- Zeitraum-Auswahl mit Minecart-Zugschiene -->
+            <div class="railway-container">
+                <div class="timelabel">Select Time Period:</div>
+                
+                <!-- Zugschiene -->
+                <div class="railway-track">
+                    <!-- Schienen -->
+                    <div class="rail-line"></div>
+                    
+                    <!-- Checkpoints -->
+                    <div class="checkpoint" data-period="1" id="checkpoint-1">
+                        <div class="checkpoint-marker"></div>
+                        <div class="checkpoint-label">Today</div>
+                    </div>
+                    
+                    <div class="checkpoint" data-period="7" id="checkpoint-7">
+                        <div class="checkpoint-marker"></div>
+                        <div class="checkpoint-label">7 Days</div>
+                    </div>
+                    
+                    <div class="checkpoint" data-period="30" id="checkpoint-30">
+                        <div class="checkpoint-marker"></div>
+                        <div class="checkpoint-label">30 Days</div>
+                    </div>
+                    
+                    <!-- Minecart -->
+                    <div class="minecart" id="minecart">
+                        <div class="cart-body"></div>
+                        <div class="cart-wheels">
+                            <div class="wheel wheel-left"></div>
+                            <div class="wheel wheel-right"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chart Container -->
+            <div class="chart-container">
+                <canvas id="metalsChart" width="100" height="100"></canvas>
+            </div>
+        </div>
+    </div>
+    </div> <!-- End containers-wrapper -->
+
+
+<!-- Mineral Information Container -->
+<div class="mineral-info-container">
+    <button class="dropdown-toggle">Mineral Information</button>
+    <div class="dropdown-content">
+        <div class="mineral-info">
+            <img src="images/Gold.png" alt="Gold" class="mineral-image">
+            <p><strong>Gold:</strong> Rarity: ★★★★☆ <br> Where It's Found: Mined from underground veins, riverbeds, and alluvial deposits. <br>
+                Gold is a rare, non-reactive, yellow noble metal known for its pliability, conductivity, and high density, with its chemical symbol being “Au” from the Latin word ”aurum”.<br> 
+                What Is It Used For?
+               
+                <br> - Jewelry and luxury goods
+                <br> - Electronics and aerospace (great electrical conductor)
+                <br> - Investment, banking, and central reserves</p>
+                
+        </div>
+        <div class="mineral-info">
+            <img src="images/Silver.png" alt="Silver" class="mineral-image">
+            <p><strong>Silver:</strong> Rarity: ★★★☆☆ <br> Where It's Found: Extracted from ore veins and as a byproduct of copper, gold, lead, and zinc mining. <br>
+                Silver is a shiny, white precious metal prized for its high conductivity, reflectivity, and antibacterial properties.
+                <br> What Is It Used For?
+                <br> - Jewelry and silverware 
+                <br> - Electronics and solar panels
+                <br> - Photography and medical applications
+                </p>
+        </div>
+        <div class="mineral-info">
+            <img src="images/Platinum.png" alt="Platinum" class="mineral-image">
+            <p><strong>Platinum:</strong> Rarity: ★★★★★ <br> Where It’s Found: Mined primarily from alluvial deposits and ore bodies in South Africa, Russia, and Canada, often alongside nickel and copper. <br> Platinum is a dense, silvery-white precious metal valued for its exceptional resistance to corrosion, high melting point, and catalytic properties. 
+                <br>What Is It Used For?
+                <br> - Jewelry and high-end watches
+                <br> - Catalytic converters in vehicles
+                <br> - Industrial catalysts and laboratory equipment
+                <br> - Medical implants and dental materials        
+            </p>
+        </div>
+    </div>
+</div>
+<!-- Chart.js library -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+<!-- Chart initialization (nur auf Seiten mit PHP-Daten aktiv) -->
+<!-- <script src="js/chart.js"></script> -->
+
+ 
+<!-- Drag & Drop, Go-Button, Minecart logic -->
+<script src="js/script.js"></script>
+
+</body>
+</html>
