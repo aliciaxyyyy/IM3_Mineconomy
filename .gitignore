@@ -1,6 +1,6 @@
 # Sensitive configuration files
 .vscode/sftp.json
-IM3_Projekt/php/config.php
+php/config.php
 
 # Environment files
 .env
@@ -24,4 +24,4 @@ Thumbs.db
 *.bak
 *.backup
 *~
-IM3_Projekt/php/config.php
+
